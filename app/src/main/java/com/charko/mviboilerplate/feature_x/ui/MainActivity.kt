@@ -1,4 +1,4 @@
-package com.charko.mviboilerplate
+package com.charko.mviboilerplate.feature_x.ui
 
 import android.os.Bundle
 import android.widget.Toast
@@ -7,19 +7,19 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.Lifecycle
-import com.charko.mviboilerplate.presentation.MainViewModel
-import com.charko.mviboilerplate.presentation.contact.MainUiEffect
-import com.charko.mviboilerplate.presentation.contact.MainUiState
+import com.charko.mviboilerplate.feature_x.presentation.MainViewModel
+import com.charko.mviboilerplate.feature_x.presentation.contact.MainUiEffect
+import com.charko.mviboilerplate.feature_x.presentation.contact.MainUiState
 import com.charko.mviboilerplate.ui.theme.MviBoilerplateTheme
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.charko.mviboilerplate.feature_x.ui.screen.MainScreen
+import com.charko.mviboilerplate.feature_x.ui.screen.MainScreenContent
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -35,9 +35,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MviBoilerplateTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                    MainScreen(
                     )
                 }
             }
@@ -79,18 +77,14 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     MviBoilerplateTheme {
-        Greeting("Android")
+        MainScreenContent(
+            state = MainUiState(false, 0, null),
+            event = {}
+        )
     }
 }

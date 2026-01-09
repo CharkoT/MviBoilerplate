@@ -1,4 +1,4 @@
-package com.charko.mviboilerplate.presentation.contact
+package com.charko.mviboilerplate.feature_x.presentation.contact
 
 import com.charko.mviboilerplate.base.UiEffect
 import com.charko.mviboilerplate.base.UiEvent
@@ -11,6 +11,7 @@ data class MainUiState(
 ) : UiState
 
 sealed class MainUiEvent: UiEvent {
+    object FetchCountInfo: MainUiEvent()
     object OnIncrementClicked: MainUiEvent()
     object OnDecrementClicked: MainUiEvent()
     data class OnToastShown(val message: String): MainUiEvent()
